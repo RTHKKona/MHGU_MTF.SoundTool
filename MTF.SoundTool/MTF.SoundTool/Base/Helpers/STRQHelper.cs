@@ -45,13 +45,6 @@ namespace MTF.SoundTool.Base.Helpers
                         return false;
                     }
 
-                    int Version = BR.ReadInt32();
-                    if (Version != (int)STRQVersion.RE5 && Version != (int)STRQVersion.RE6 && Version != (int)STRQVersion.REV1 && Version != (int)STRQVersion.REV2 && Version != (int)STRQVersion.RE0)
-                    {
-                        XtraMessageBox.Show($"Error reading {FileName}: Unsupported file version, only RESIDENT EVIL 5/6/REV1/REV2 & UMVC3 versions are currently supported.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-
                     int Entries = BR.ReadInt32();
                     if (Entries < 1)
                     {
@@ -197,7 +190,7 @@ namespace MTF.SoundTool.Base.Helpers
             }
             catch (Exception)
             {
-                XtraMessageBox.Show($"Error reading {FileName}: File seems to be corrupted, please refer to a valid STQ file when using this tool.", "Ops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show($"Error reading {FileName}: File seems to be corrupted, please refer to a valid STQ file when using this tool.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
